@@ -3,11 +3,6 @@
 
 ## 217. Contains Duplicate
 
-**Solved**  
-**Easy**  
-**Topics**  
-*premium lock icon*  
-**Companies**
 
 ---
 
@@ -48,6 +43,21 @@ All elements are distinct.
 
 ---
 
+
 ### Constraints:
 - `1 <= nums.length <= 10^5`  
 - `-10^9 <= nums[i] <= 10^9`
+
+---
+
+## Code 
+```python
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        seen = set()
+        for i in nums:
+            if i in seen:
+                return True
+            seen.add(i)
+        return False
+```
