@@ -61,3 +61,53 @@ class Solution:
             seen.add(i)
         return False
 ```
+
+
+## 242. Valid Anagram
+
+
+---
+
+Given two strings `s` and `t`, return `true` if `t` is an anagram of `s`, and `false` otherwise.
+
+---
+
+### Example 1:
+**Input:**  
+`s = "anagram", t = "nagaram"`  
+
+**Output:**  
+`true`
+
+---
+
+### Example 2:
+**Input:**  
+`s = "rat", t = "car"`  
+
+**Output:**  
+`false`
+
+---
+
+### Constraints:
+- `1 <= s.length, t.length <= 5 * 10^4`  
+- `s` and `t` consist of lowercase English letters.  
+
+---
+
+## Code
+```python
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        f = [0] * 26
+        for c in s:
+            f[ord(c) - ord('a')]+=1
+        for c in t:
+            f[ord(c) - ord('a')]-=1
+        for i in f:
+            if i != 0:
+                return False
+        return True
+```
+
