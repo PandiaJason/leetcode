@@ -44,6 +44,8 @@ All elements are distinct.
 
 
 ### Code 
+
+#### Cpp
 ```cpp
 #include<iostream>
 #include<vector>
@@ -74,7 +76,7 @@ int main(){
 }
 
 ```
-
+#### py3
 ```python
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
