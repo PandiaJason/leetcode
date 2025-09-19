@@ -45,22 +45,34 @@ All elements are distinct.
 
 ### Code 
 ```cpp
-#include <vector>
-#include <unordered_set>
+#include<iostream>
+#include<vector>
+#include<unordered_set>
 using namespace std;
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        unordered_set<int> seen;
-        for (int num : nums) {
-            if (seen.count(num)) {
+        unordered_set<int> seenSet;
+        for (int i = 0; i < nums.size(); ++i){
+            // cout << nums[i] << " " ;
+            if (seenSet.count(nums[i])){
                 return true;
             }
-            seen.insert(num);
+            seenSet.insert(nums[i]);
         }
         return false;
     }
+
 };
+int main(){
+    Solution sol;
+    vector<int> nums = {1,2,3,1};
+    bool res = sol.containsDuplicate(nums);
+    cout << (res ? "true" : "false") << endl ;
+    return 0;
+
+}
+
 ```
 
 ```python
