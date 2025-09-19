@@ -426,6 +426,51 @@ Given an integer array `nums` and an integer `k`, return the `k` most frequent e
 ### Code
 #### Cpp
 ```cpp
+#include<iostream>
+#include <string>
+#include<vector>
+#include<unordered_map>
+#include<sstream>
 
+using namespace std;
+
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int, int>fMap;
+        for (int num : nums) fMap[num]++;
+
+        int n = nums.size();
+        vector<vector<int>> buckets(n+1);
+        for (pair<const int, int> &kv : fMap) buckets[kv.second].push_back(kv.first);
+        vector<int> res;
+
+        for (int i = n; i >= 0 && res.size() < k; --i) {
+            for (int num : buckets[i]) {
+                res.push_back(num);
+                if (res.size() == k) break;
+            }
+        }
+        return res;
+    }
+};
+
+int main() {
+    Solution sol;
+
+    string ln, x;
+    getline(cin, ln);
+    stringstream ss(ln);
+    vector<int> nums;
+
+    for (; ss >> x;) nums.push_back(stoi(x));
+
+    int k;
+    cin >> k;
+
+    vector<int> res = sol.topKFrequent(nums, k);
+    for (int x : res) cout << x << " ";
+    cout << endl;
+}
 ```
 ---
