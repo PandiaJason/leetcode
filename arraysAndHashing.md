@@ -118,6 +118,49 @@ Given two strings `s` and `t`, return `true` if `t` is an anagram of `s`, and `f
 
 
 ### Code
+#### Cpp
+```cpp
+#include<iostream>
+#include<vector>
+using namespace std;
+
+class Solution{
+public:
+    bool isAnagram(string s, string t) {
+
+        if (s.size() != t.size()) return false;
+        vector<int> f(26,0);
+
+        for (char c: s){
+            f[c - 'a']++;
+        }
+
+        for (char c : t){
+            f[c - 'a']--;
+        }
+
+        for (int e : f){
+            if (e != 0) return false;
+        }
+
+        return true;
+    }
+
+};
+
+int main()
+{
+    Solution sol;
+    string s, t;
+    cin >> s >> t ;
+    bool res = sol.isAnagram(s,t);
+    cout << (res? "true" : "false" ) << endl;
+    return 0;
+
+}
+
+```
+#### py3
 ```python
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
