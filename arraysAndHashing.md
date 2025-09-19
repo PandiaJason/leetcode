@@ -220,7 +220,9 @@ Because `nums[0] + nums[1] == 9`, we return `[0, 1]`.
 
 
 ### Code
+
 #### Cpp
+
 ```cpp
 #include<iostream>
 #include<string>
@@ -327,7 +329,7 @@ Given an array of strings `strs`, group the anagrams together. You can return th
 - `0 <= strs[i].length <= 100`  
 - `strs[i]` consists of lowercase English letters.  
 
-###Code
+### Code
 #### Cpp
 ```cpp
 #include<iostream>
@@ -385,6 +387,5 @@ int main()
 
     return 0;
 }
-
 ```
 ___
