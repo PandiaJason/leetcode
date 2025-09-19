@@ -288,3 +288,103 @@ class Solution:
         return [0,0]
 ```
 ---
+
+## 49. Group Anagrams  
+
+Given an array of strings `strs`, group the anagrams together. You can return the answer in any order.  
+
+### Example 1:  
+**Input:**  
+`strs = ["eat","tea","tan","ate","nat","bat"]`  
+
+**Output:**  
+`[["bat"],["nat","tan"],["ate","eat","tea"]]`  
+
+**Explanation:**  
+- There is no string in `strs` that can be rearranged to form `"bat"`.  
+- The strings `"nat"` and `"tan"` are anagrams as they can be rearranged to form each other.  
+- The strings `"ate"`, `"eat"`, and `"tea"` are anagrams as they can be rearranged to form each other.  
+
+
+### Example 2:  
+**Input:**  
+`strs = [""]`  
+
+**Output:**  
+`[[""]]`  
+
+
+### Example 3:  
+**Input:**  
+`strs = ["a"]`  
+
+**Output:**  
+`[["a"]]`  
+
+
+### Constraints:  
+- `1 <= strs.length <= 10^4`  
+- `0 <= strs[i].length <= 100`  
+- `strs[i]` consists of lowercase English letters.  
+
+###Code
+#### Cpp
+```cpp
+#include<iostream>
+#include<vector>
+#include<unordered_map>
+#include<string>
+#include<sstream>
+
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        unordered_map<string, vector<string>> hashMap;
+
+        for (string w: strs){
+            vector<int> f(26,0);
+            for (char c: w) f[c - 'a']++;
+            string key = "";
+            // in one space for a string that makes # + 1 -> 1# or
+            // # + 0 -> 0# string concatenation buddy
+            for (int i = 0; i < 26; ++i) key += string(1,'#') + to_string(f[i]);
+
+            hashMap[key].push_back(w);
+        }
+            vector<vector<string>> res;
+            for (auto &kv: hashMap) res.push_back(kv.second);
+            return res;
+    }
+};
+
+int main()
+{
+    Solution sol;
+
+    vector<string> strs;
+
+    string ln;
+
+    string x;
+
+    getline(cin, ln);
+
+    stringstream ss(ln);
+
+    for(; ss >> x; ) strs.push_back(x);
+
+    // for (string w: strs) cout << w << " ";
+    // cout << endl;
+
+    vector<vector<string>> res = sol.groupAnagrams(strs);
+
+    for (auto kv: res) for (auto v:kv) cout << v << " ";
+    cout << endl;
+
+    return 0;
+}
+
+```
+___
