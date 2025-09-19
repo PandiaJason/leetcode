@@ -220,6 +220,62 @@ Because `nums[0] + nums[1] == 9`, we return `[0, 1]`.
 
 
 ### Code
+#### Cpp
+```cpp
+#include<iostream>
+#include<string>
+#include<vector>
+#include<unordered_map>
+#include<sstream>
+using namespace std;
+
+class Solution{
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> hashMap;
+
+        for (int i = 0; i < nums.size(); ++i){
+            int d = target - nums[i];
+
+            // If d exists, it returns an iterator to the element.
+            // If d does not exist, it returns hashMap.end().
+            if (hashMap.find(d) != hashMap.end()) return {hashMap[d],i};
+            hashMap[nums[i]] = i;
+        }
+
+        return {0,0};
+    }
+};
+
+
+int main()
+{
+    Solution sol;
+
+    int x, t;
+
+
+    vector<int> nums;
+
+    string ln;
+
+    getline(cin, ln);
+
+    stringstream ss(ln);
+
+    for (int i = 0; ss >> x; ++i) nums.push_back(x);
+
+    cin >> t;
+
+    vector<int> res = sol.twoSum(nums, t);
+
+    for (int e: res) cout << e << " " ;
+    cout << endl;
+    return 0;
+}
+
+```
+#### py3
 ```python
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
