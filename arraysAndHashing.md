@@ -448,10 +448,10 @@ public:
         for (int i = n; i >= 0 && res.size() < k; --i) {
             for (int num : buckets[i]) {
                 res.push_back(num);
-                if (res.size() == k) break;
+                if (res.size() == k) return res;
             }
         }
-        return res;
+    return res;
     }
 };
 
