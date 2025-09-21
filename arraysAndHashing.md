@@ -502,6 +502,64 @@ Design an algorithm to encode a list of strings to a single string. The encoded 
 ### Code
 #### C++
 ```cpp
+#include<iostream>
+#include <string>
+#include<vector>
+#include<sstream>
+
+using namespace std;
+
+class Solution{
+public:
+    string encode(vector<string> &strs){
+        string encoded;
+        for (string &word: strs) encoded += to_string(word.size()) + "#" + word;
+        return encoded;
+    }
+
+    vector<string> decode(string encoded){
+        vector<string> decoded;
+        for (int i = 0; i < encoded.size(); ) {
+            int j = i;
+            for (; encoded[j] != '#'; ++j);
+            int len = stoi(encoded.substr(i, j - i));
+            string word = encoded.substr(j + 1, len);
+            decoded.push_back(word);
+            i = j + 1 + len;
+
+         }
+         return decoded;
+     }
+};
+
+int main()
+{
+    Solution sol;
+    vector<string> strs;
+    string ln, x;
+    getline(cin,ln);
+    stringstream ss(ln);
+
+    for (; ss >> x ;)strs.push_back(x);
+
+    string encoded = sol.encode(strs);
+
+
+    cout << "Encoded" << endl << encoded << " ";
+    cout << endl;
+
+    vector<string> decoded = sol.decode(encoded);
+
+    cout << "Decoded" << endl;
+
+    for (string word: decoded) cout << word << " ";
+    cout << endl;
+
+    // for (string word: strs) cout << word << " " << endl;
+    return 0;
+
+}
+
 ```
 ---
 
