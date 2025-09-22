@@ -500,7 +500,7 @@ Design an algorithm to encode a list of strings to a single string. The encoded 
 - `strs[i]` contains only UTF-8 characters  
 
 ### Code
-#### C++
+#### Cpp
 ```cpp
 #include<iostream>
 #include <string>
